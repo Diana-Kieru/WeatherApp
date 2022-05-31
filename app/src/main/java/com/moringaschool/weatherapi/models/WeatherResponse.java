@@ -10,45 +10,24 @@ import com.google.gson.annotations.SerializedName;
 
 public class WeatherResponse {
 
-    @SerializedName("coord")
+    @SerializedName("lat")
     @Expose
-    private Coord coord;
-    @SerializedName("weather")
+    private Double lat;
+    @SerializedName("lon")
     @Expose
-    private List<Weather> weather = null;
-    @SerializedName("base")
-    @Expose
-    private String base;
-    @SerializedName("main")
-    @Expose
-    private Main main;
-    @SerializedName("visibility")
-    @Expose
-    private Integer visibility;
-    @SerializedName("wind")
-    @Expose
-    private Wind wind;
-    @SerializedName("clouds")
-    @Expose
-    private Clouds clouds;
-    @SerializedName("dt")
-    @Expose
-    private Integer dt;
-    @SerializedName("sys")
-    @Expose
-    private Sys sys;
+    private Double lon;
     @SerializedName("timezone")
     @Expose
-    private Integer timezone;
-    @SerializedName("id")
+    private String timezone;
+    @SerializedName("timezone_offset")
     @Expose
-    private Integer id;
-    @SerializedName("name")
+    private Integer timezoneOffset;
+    @SerializedName("current")
     @Expose
-    private String name;
-    @SerializedName("cod")
+    private Current current;
+    @SerializedName("minutely")
     @Expose
-    private Integer cod;
+    private List<Minutely> minutely = null;
 
     /**
      * No args constructor for use in serialization
@@ -59,139 +38,69 @@ public class WeatherResponse {
 
     /**
      * 
-     * @param visibility
+     * @param current
+     * @param timezoneOffset
      * @param timezone
-     * @param main
-     * @param clouds
-     * @param sys
-     * @param dt
-     * @param coord
-     * @param weather
-     * @param name
-     * @param cod
-     * @param id
-     * @param base
-     * @param wind
+     * @param lon
+     * @param minutely
+     * @param lat
      */
-    public WeatherResponse(Coord coord, List<Weather> weather, String base, Main main, Integer visibility, Wind wind, Clouds clouds, Integer dt, Sys sys, Integer timezone, Integer id, String name, Integer cod) {
+    public WeatherResponse(Double lat, Double lon, String timezone, Integer timezoneOffset, Current current, List<Minutely> minutely) {
         super();
-        this.coord = coord;
-        this.weather = weather;
-        this.base = base;
-        this.main = main;
-        this.visibility = visibility;
-        this.wind = wind;
-        this.clouds = clouds;
-        this.dt = dt;
-        this.sys = sys;
+        this.lat = lat;
+        this.lon = lon;
         this.timezone = timezone;
-        this.id = id;
-        this.name = name;
-        this.cod = cod;
+        this.timezoneOffset = timezoneOffset;
+        this.current = current;
+        this.minutely = minutely;
     }
 
-    public Coord getCoord() {
-        return coord;
+    public Double getLat() {
+        return lat;
     }
 
-    public void setCoord(Coord coord) {
-        this.coord = coord;
+    public void setLat(Double lat) {
+        this.lat = lat;
     }
 
-    public List<Weather> getWeather() {
-        return weather;
+    public Double getLon() {
+        return lon;
     }
 
-    public void setWeather(List<Weather> weather) {
-        this.weather = weather;
+    public void setLon(Double lon) {
+        this.lon = lon;
     }
 
-    public String getBase() {
-        return base;
-    }
-
-    public void setBase(String base) {
-        this.base = base;
-    }
-
-    public Main getMain() {
-        return main;
-    }
-
-    public void setMain(Main main) {
-        this.main = main;
-    }
-
-    public Integer getVisibility() {
-        return visibility;
-    }
-
-    public void setVisibility(Integer visibility) {
-        this.visibility = visibility;
-    }
-
-    public Wind getWind() {
-        return wind;
-    }
-
-    public void setWind(Wind wind) {
-        this.wind = wind;
-    }
-
-    public Clouds getClouds() {
-        return clouds;
-    }
-
-    public void setClouds(Clouds clouds) {
-        this.clouds = clouds;
-    }
-
-    public Integer getDt() {
-        return dt;
-    }
-
-    public void setDt(Integer dt) {
-        this.dt = dt;
-    }
-
-    public Sys getSys() {
-        return sys;
-    }
-
-    public void setSys(Sys sys) {
-        this.sys = sys;
-    }
-
-    public Integer getTimezone() {
+    public String getTimezone() {
         return timezone;
     }
 
-    public void setTimezone(Integer timezone) {
+    public void setTimezone(String timezone) {
         this.timezone = timezone;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getTimezoneOffset() {
+        return timezoneOffset;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setTimezoneOffset(Integer timezoneOffset) {
+        this.timezoneOffset = timezoneOffset;
     }
 
-    public String getName() {
-        return name;
+    public Current getCurrent() {
+        return current;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCurrent(Current current) {
+        this.current = current;
     }
 
-    public Integer getCod() {
-        return cod;
+    public List<Minutely> getMinutely() {
+        return minutely;
     }
 
-    public void setCod(Integer cod) {
-        this.cod = cod;
+    public void setMinutely(List<Minutely> minutely) {
+        this.minutely = minutely;
     }
 
 }
