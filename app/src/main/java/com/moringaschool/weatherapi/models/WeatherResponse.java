@@ -1,106 +1,196 @@
 package com.moringaschool.weatherapi.models;
-
-
-
+​
 import java.util.List;
-
+​
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-
+​
+        ​
+        ​
 public class WeatherResponse {
-
-    @SerializedName("lat")
+​
+    @SerializedName("coord")
     @Expose
-    private Double lat;
-    @SerializedName("lon")
+    private Coord coord;
+    @SerializedName("weather")
     @Expose
-    private Double lon;
+    private List<Weather> weather = null;
+    @SerializedName("base")
+    @Expose
+    private String base;
+    @SerializedName("main")
+    @Expose
+    private Main main;
+    @SerializedName("visibility")
+    @Expose
+    private Integer visibility;
+    @SerializedName("wind")
+    @Expose
+    private Wind wind;
+    @SerializedName("clouds")
+    @Expose
+    private Clouds clouds;
+    @SerializedName("dt")
+    @Expose
+    private Integer dt;
+    @SerializedName("sys")
+    @Expose
+    private Sys sys;
     @SerializedName("timezone")
     @Expose
-    private String timezone;
-    @SerializedName("timezone_offset")
+    private Integer timezone;
+    @SerializedName("id")
     @Expose
-    private Integer timezoneOffset;
-    @SerializedName("current")
+    private Integer id;
+    @SerializedName("name")
     @Expose
-    private Current current;
-    @SerializedName("minutely")
+    private String name;
+    @SerializedName("cod")
     @Expose
-    private List<Minutely> minutely = null;
-
+    private Integer cod;
+​
     /**
      * No args constructor for use in serialization
-     * 
+     *
      */
     public WeatherResponse() {
     }
-
+​
     /**
-     * 
-     * @param current
-     * @param timezoneOffset
+     *
+     * @param visibility
      * @param timezone
-     * @param lon
-     * @param minutely
-     * @param lat
+     * @param main
+     * @param clouds
+     * @param sys
+     * @param dt
+     * @param coord
+     * @param weather
+     * @param name
+     * @param cod
+     * @param id
+     * @param base
+     * @param wind
      */
-    public WeatherResponse(Double lat, Double lon, String timezone, Integer timezoneOffset, Current current, List<Minutely> minutely) {
+    public WeatherResponse(Coord coord, List<Weather> weather, String base, Main main, Integer visibility, Wind wind, Clouds clouds, Integer dt, Sys sys, Integer timezone, Integer id, String name, Integer cod) {
         super();
-        this.lat = lat;
-        this.lon = lon;
+        this.coord = coord;
+        this.weather = weather;
+        this.base = base;
+        this.main = main;
+        this.visibility = visibility;
+        this.wind = wind;
+        this.clouds = clouds;
+        this.dt = dt;
+        this.sys = sys;
         this.timezone = timezone;
-        this.timezoneOffset = timezoneOffset;
-        this.current = current;
-        this.minutely = minutely;
+        this.id = id;
+        this.name = name;
+        this.cod = cod;
     }
-
-    public Double getLat() {
-        return lat;
+​
+    public Coord getCoord() {
+        return coord;
     }
-
-    public void setLat(Double lat) {
-        this.lat = lat;
+​
+    public void setCoord(Coord coord) {
+        this.coord = coord;
     }
-
-    public Double getLon() {
-        return lon;
+​
+    public List<Weather> getWeather() {
+        return weather;
     }
-
-    public void setLon(Double lon) {
-        this.lon = lon;
+​
+    public void setWeather(List<Weather> weather) {
+        this.weather = weather;
     }
-
-    public String getTimezone() {
+​
+    public String getBase() {
+        return base;
+    }
+​
+    public void setBase(String base) {
+        this.base = base;
+    }
+​
+    public Main getMain() {
+        return main;
+    }
+​
+    public void setMain(Main main) {
+        this.main = main;
+    }
+​
+    public Integer getVisibility() {
+        return visibility;
+    }
+​
+    public void setVisibility(Integer visibility) {
+        this.visibility = visibility;
+    }
+​
+    public Wind getWind() {
+        return wind;
+    }
+​
+    public void setWind(Wind wind) {
+        this.wind = wind;
+    }
+​
+    public Clouds getClouds() {
+        return clouds;
+    }
+​
+    public void setClouds(Clouds clouds) {
+        this.clouds = clouds;
+    }
+​
+    public Integer getDt() {
+        return dt;
+    }
+​
+    public void setDt(Integer dt) {
+        this.dt = dt;
+    }
+​
+    public Sys getSys() {
+        return sys;
+    }
+​
+    public void setSys(Sys sys) {
+        this.sys = sys;
+    }
+​
+    public Integer getTimezone() {
         return timezone;
     }
-
-    public void setTimezone(String timezone) {
+​
+    public void setTimezone(Integer timezone) {
         this.timezone = timezone;
     }
-
-    public Integer getTimezoneOffset() {
-        return timezoneOffset;
+​
+    public Integer getId() {
+        return id;
     }
-
-    public void setTimezoneOffset(Integer timezoneOffset) {
-        this.timezoneOffset = timezoneOffset;
+​
+    public void setId(Integer id) {
+        this.id = id;
     }
-
-    public Current getCurrent() {
-        return current;
+​
+    public String getName() {
+        return name;
     }
-
-    public void setCurrent(Current current) {
-        this.current = current;
+​
+    public void setName(String name) {
+        this.name = name;
     }
-
-    public List<Minutely> getMinutely() {
-        return minutely;
+​
+    public Integer getCod() {
+        return cod;
     }
-
-    public void setMinutely(List<Minutely> minutely) {
-        this.minutely = minutely;
+​
+    public void setCod(Integer cod) {
+        this.cod = cod;
     }
-
+​
 }
