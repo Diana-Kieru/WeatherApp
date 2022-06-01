@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     Log.d(TAG, response.body().getName());
                 }else {
-                    Log.e(TAG, "Error");
+                    Log.e(TAG, "Error"+ response.headers());
                 }
             }
 
