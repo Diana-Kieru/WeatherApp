@@ -8,3 +8,9 @@ The weather app provides atmospheric pressure, weather conditions, visibility di
 * Build (gradle build)
 * Run the App (maven))
 
+## Known Bugs
+There are no known bugs. Incase you experience any errors using this website kindly contact me at dianakieru1@gmail.com
+## Technologies Used
+* Android
+* Java
+
