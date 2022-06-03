@@ -14,3 +14,11 @@ There are no known bugs. Incase you experience any errors using this website kin
 * Android
 * Java
 
+## Support and contact details
+email: dianakieru1@gmail.com
+
+
+### License
+[MIT License](./LICENSE)
+
+Copyright (c) [2022] [Diana Kieru]
