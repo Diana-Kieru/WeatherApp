@@ -1,5 +1,5 @@
 # WeatherApp
-The weather app provides atmospheric pressure, weather conditions, visibility distance, relative humidity, precipitation in different unites, dew point, wind speed and direction, in addition to ten days in future and hourly weather forecast.
+The weather app provides atmospheric pressure, weather conditions, visibility distance, relative humidity, precipitation in different unites, dew point, wind speed and direction, in addition to ten days in future and hourly weather forecast. This weather app will be continue for the next 4 weeks adding features and making it complex but more productive. 
 #### By Diana Kieru
 
 ## Setup/Installation Requirements
