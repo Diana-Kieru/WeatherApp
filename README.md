@@ -7,6 +7,8 @@ The weather app provides atmospheric pressure, weather conditions, visibility di
 * used recyclerview
 * Played around with different fonts 
 * Used constraint layout for the app
+* used retrofit
+
 
 ## Setup/Installation Requirements
 * You need to have Java, Android Studio, gradle, Junit, Jdk and sdk installed.
