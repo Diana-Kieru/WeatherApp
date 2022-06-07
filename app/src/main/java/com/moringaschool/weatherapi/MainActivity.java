@@ -20,10 +20,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     Button button;
     @BindView(R.id.city)
     TextInputLayout mCity;
+    @BindView(R.id.daily) Button dailyButton;
     public static final String TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,28 +32,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
 
+
         ButterKnife.bind(this);
 
+        dailyButton.setOnClickListener((View.OnClickListener) this);
 
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
-                intent.putExtra("city", mCity.getEditText().getText().toString());
-                startActivity(intent);
-
-            }
-        });
-
-
+        button.setOnClickListener((View.OnClickListener) this);
 
     }
+            @Override
+            public void onClick(View v) {
+                if (v == button) {
+                    Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
+                    intent.putExtra("city", mCity.getEditText().getText().toString());
+                    startActivity(intent);
+
+
+                }
+                if (v == dailyButton) {
+                    Intent intent = new Intent(MainActivity.this, DailyWeather.class);
+                    intent.putExtra("city", mCity.getEditText().getText().toString());
+                    startActivity(intent);
+
+
+                }
+
+
+            }
+
+
+
+
+
     public void onResume() {
 
 
         super.onResume();
 
     }
+
+
 }

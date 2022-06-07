@@ -16,6 +16,9 @@
         android:theme="@style/Theme.WeatherApi"
         tools:targetApi="31">
         <activity
+            android:name=".DailyWeather"
+            android:exported="false" />
+        <activity
             android:name=".DisplayActivity"
             android:exported="false" />
         <activity
