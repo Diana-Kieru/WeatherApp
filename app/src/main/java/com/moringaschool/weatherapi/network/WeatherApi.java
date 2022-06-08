@@ -18,8 +18,6 @@ public interface WeatherApi {
 
 
 
-    @GET("weather?"+ Constants.API_KEY_QUERY_PARAMETER + "=" + Constants.WEATHER_API_KEY)
-    Call<DailyWeatherResponse> getDailyWeather(@Query("q") String city);
 
 
 
