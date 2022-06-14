@@ -1,5 +1,6 @@
 package com.moringaschool.weatherapi;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.weatherapi.models.WeatherResponse;
 import com.moringaschool.weatherapi.network.WeatherApi;
 import com.moringaschool.weatherapi.network.WeatherClient;
@@ -21,37 +27,65 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    Button button;
+   @BindView(R.id.button) Button mButton;
     @BindView(R.id.city)
     TextInputLayout mCity;
+
+    private DatabaseReference mSearchedCity;
+    private ValueEventListener mSearchedCityReferenceListener;
 
     public static final String TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mSearchedCity = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.API_SEARCHED_LOCATION);
+
+        mSearchedCityReferenceListener = mSearchedCity.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot shot: snapshot.getChildren()){
+                    String city = shot.getValue().toString();
+                    Log.d("Cities", "Cities: " + city);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = findViewById(R.id.button);
-
-
         ButterKnife.bind(this);
 
 
 
-        button.setOnClickListener((View.OnClickListener) this);
+        mButton.setOnClickListener(this);
 
     }
-            @Override
-            public void onClick(View v) {
-                if (v == button) {
-                    Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
-                    intent.putExtra("city", mCity.getEditText().getText().toString());
-                    startActivity(intent);
+        @Override
+        public void onClick(View v) {
+            if (v == mButton) {
+                String city = mCity.getEditText().toString();
 
-
-                }
+                saveToFirebase(city);
+                Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
+                intent.putExtra("city", city);
+                startActivity(intent);
 
 
             }
+
+
+        }
+
+        public void saveToFirebase(String city){
+        mSearchedCity.push().setValue(city);
+        }
 
 
 
@@ -64,5 +98,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSearchedCity.removeEventListener(mSearchedCityReferenceListener);
+    }
 }

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.moringaschool.weatherapi.models.Main;
@@ -23,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DisplayActivity extends AppCompatActivity {
+public class DisplayActivity extends AppCompatActivity implements View.OnClickListener {
     private DisplayAdapter mDisplayAdapter;
     private List<Weather> mList;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -75,5 +76,10 @@ public class DisplayActivity extends AppCompatActivity {
 
 
         });
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }

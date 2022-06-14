@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "149835619778",
+    "project_id": "weatherapp-7e42f",
+    "storage_bucket": "weatherapp-7e42f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149835619778:android:0978a79e300c728a8a0a5b",
+        "android_client_info": {
+          "package_name": "com.moringaschool.weatherapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149835619778-kkhdtpelntsmmugglb185m3as49bvovu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringaschool.weatherapi",
+            "certificate_hash": "da71d6b372cee232229471b6bf49cb4bb5dca0cb"
+          }
+        },
+        {
+          "client_id": "149835619778-42nv47ljpkqjccq2s2p5ukd8scn3qfp8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9p_wJdcf4QRDEo4MXH8FUfoHOrikcPgg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149835619778-42nv47ljpkqjccq2s2p5ukd8scn3qfp8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
