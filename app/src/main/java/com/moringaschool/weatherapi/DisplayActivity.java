@@ -59,9 +59,11 @@ public class DisplayActivity extends AppCompatActivity implements View.OnClickLi
                     mcloud.setText("Cloud " + " "+response.body().getClouds().getAll().toString());
                     mrain.setText("Rain " + " "+response.body().getMain().getFeelsLike().toString());
 
+                    mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     DisplayAdapter displayAdapter = new DisplayAdapter(DisplayActivity.this, mList);
                     mRecyclerView.setAdapter(displayAdapter);
-                    mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    Log.d("DisplayActivity", "count" + displayAdapter.getItemCount());
+
 
 
                 }

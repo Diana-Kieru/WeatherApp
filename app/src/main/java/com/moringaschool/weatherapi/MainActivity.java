@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick(View v) {
             if (v == mButton) {
-                String city = mCity.getEditText().toString();
+                String city = mCity.getEditText().getText().toString();
 
                 saveToFirebase(city);
                 Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
