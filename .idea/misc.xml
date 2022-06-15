@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_create_account.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/activity_daily_weather.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_display.xml" value="0.22" />
@@ -12,6 +13,7 @@
         <entry key="app/src/main/res/layout/displaydaily.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/displayrecyclerview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/weatherdisplay.xml" value="0.22" />
+        <entry key="app/src/main/res/menu/menu_search.xml" value="0.19166666666666668" />
       </map>
     </option>
   </component>
