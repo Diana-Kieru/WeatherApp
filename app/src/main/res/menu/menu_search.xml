@@ -7,4 +7,13 @@
         android:icon="@drawable/baseline_search_white_24dp"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="collapseActionView|ifRoom" />
+
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/ic_baseline_more_vert_24"
+        android:title="logout"
+        android:iconTint="@color/white"
+
+
+        app:showAsAction="ifRoom" />
 </menu>
