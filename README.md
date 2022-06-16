@@ -2,13 +2,13 @@
 The weather app provides atmospheric pressure, weather conditions, visibility distance, relative humidity, precipitation in different unites, dew point, wind speed and direction, in addition to ten days in future and hourly weather forecast. This weather app will be continue for the next 4 weeks adding features and making it complex but more productive. 
 #### By Diana Kieru
 
-## WEEK 
+## WEEK 2
 * Called API key(tested on postman and added classes using json schema)
 * used recyclerview
 * Played around with different fonts 
 * Used constraint layout for the app
 * used retrofit
-## WEEK 
+## WEEK 3
 * Implement Firebase user authentication.
 * Save and retrieve data using Firebase, making sure to structure your data according to Firebase guidelines.
 * Employ the Firebase-RecyclerAdapter to display from your database.
