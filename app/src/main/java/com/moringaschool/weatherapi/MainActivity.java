@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +29,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
    @BindView(R.id.button) Button mButton;
     @BindView(R.id.city)
     TextInputLayout mCity;
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -62,6 +67,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
 
 
         mButton.setOnClickListener(this);
@@ -70,7 +78,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick(View v) {
             if (v == mButton) {
-                String city = mCity.getEditText().getText().toString();
+                mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+                String city = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+                if (city == null || city.equals("")){
+                    city = "Nairobi";
+                    addToSharedPreferences(city);
+                }
+
+
 
                 saveToFirebase(city);
                 Intent intent = new Intent(MainActivity.this, DisplayActivity.class);
@@ -102,5 +117,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         super.onDestroy();
         mSearchedCity.removeEventListener(mSearchedCityReferenceListener);
+    }
+    private void addToSharedPreferences(String location) {
+        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
     }
 }

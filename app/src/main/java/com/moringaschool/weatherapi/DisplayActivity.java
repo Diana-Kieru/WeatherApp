@@ -4,10 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.moringaschool.weatherapi.models.Main;
@@ -25,6 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DisplayActivity extends AppCompatActivity implements View.OnClickListener {
+    private SharedPreferences mSharedPreferences;
     private DisplayAdapter mDisplayAdapter;
     private List<Weather> mList;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -35,18 +42,64 @@ public class DisplayActivity extends AppCompatActivity implements View.OnClickLi
     @BindView(R.id.weatherid) TextView mweather;
     @BindView(R.id.cloudsid) TextView mcloud;
     @BindView(R.id.rainid) TextView mrain;
+    private SharedPreferences.Editor mEditor;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Vollkorn/static/Vollkorn-Black.ttf"); //change this to your own font
 
         ButterKnife.bind(this);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+        Log.d("Shared Pref Location", mRecentAddress);
+       apicall(mRecentAddress);
+    }
 
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        ButterKnife.bind(this);
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+               if (s == null){
+                   return false;
+               }
+
+                   addToSharedPreferences(s);
+                apicall(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+
+
+    }
+
+    private void addToSharedPreferences(String location) {
+        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+    }
+    private void apicall(String city){
         WeatherApi weatherApiClient = WeatherClient.getClient();
-        Call<WeatherResponse> call = weatherApiClient.getCurrentWeather(getIntent().getStringExtra("city"));
+        Call<WeatherResponse> call = weatherApiClient.getCurrentWeather(city);
         call.enqueue(new Callback<WeatherResponse>() {
             @Override
             public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
@@ -66,6 +119,8 @@ public class DisplayActivity extends AppCompatActivity implements View.OnClickLi
 
 
 
+
+
                 }
             }
 
@@ -78,10 +133,5 @@ public class DisplayActivity extends AppCompatActivity implements View.OnClickLi
 
 
         });
-    }
-
-    @Override
-    public void onClick(View view) {
-
     }
 }
