@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -41,7 +43,10 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.DisplayV
 
     @Override
     public void onBindViewHolder(@NonNull DisplayAdapter.DisplayViewHolder holder, int position) {
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.bindWeather(weatherList.get(position));
+        holder.itemView.startAnimation(animation);
+
 
     }
 

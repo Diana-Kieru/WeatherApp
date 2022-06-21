@@ -3,6 +3,7 @@ package com.moringaschool.weatherapi;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -80,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onClick(View v) {
             if (v == mButton) {
+                @SuppressLint("ResourceType") Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.animator.fadeanimation);
+                mButton.startAnimation(animation);
                 mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
                 String city = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
                 if (city == null || city.equals("")){
