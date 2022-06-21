@@ -16,13 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.moringaschool.weatherapi.models.Main;
 import com.moringaschool.weatherapi.models.Weather;
 import com.moringaschool.weatherapi.models.WeatherResponse;
+import com.moringaschool.weatherapi.utils.ItemTouchHelperViewHolder;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.DisplayViewHolder> {
+public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.DisplayViewHolder> implements ItemTouchHelperViewHolder {
     private Context mContext;
     private List<Weather> weatherList;
 
@@ -55,6 +56,17 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.DisplayV
         return weatherList.size();
     }
 
+    @Override
+    public void onItemSelected() {
+
+
+    }
+
+    @Override
+    public void onItemClear() {
+
+    }
+
     public class DisplayViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.temperature)
         TextView mTemeperature;
@@ -75,5 +87,23 @@ public class DisplayAdapter extends RecyclerView.Adapter<DisplayAdapter.DisplayV
             mPressure.setText(weather.getDescription());
             mHumidity.setText(weather.getIcon());
         }
+        //PROGRAMMATIC ANIMATIONS
+
+    @Override
+    public void onItemSelected() {
+        itemView.animate()
+                .alpha(0.7f)
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(500);
+    }
+
+    @Override
+    public void onItemClear() {
+        itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f);
+    }
     }
 }
