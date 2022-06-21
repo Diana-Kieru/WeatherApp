@@ -15,6 +15,13 @@ The weather app provides atmospheric pressure, weather conditions, visibility di
 * Use SharedPreferences to save an important piece of data in your app.
 * Utilize dialogs to inform users of login status.
 * Use a SearchView widget to gather user input.
+
+## WEEK 4
+* Includes two gesture listeners OR two animations, OR utilize the camera within your application.
+* Implements one alternate resource.
+
+
+
 ## Setup/Installation Requirements
 * You need to have Java, Android Studio, gradle, Junit, Jdk and sdk installed.
 * Clone the repository
